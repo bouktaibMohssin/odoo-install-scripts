@@ -38,5 +38,5 @@ It also follows the approach recommended in Odoo's documentation (https://www.od
 
 5. Execute the script:
   ```bash
-  . odoo-clouder-install.sh
+  ./odoo-clouder-install.sh
   ```
