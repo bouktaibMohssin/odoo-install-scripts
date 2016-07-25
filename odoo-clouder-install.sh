@@ -119,6 +119,7 @@ sudo ln -s /lib/x86_64-linux-gnu/libz.so.1 /lib/libz.so
 
 echo -e "\n---- Install and Upgrade pip and virtualenv ----"
 sudo pip install --upgrade pip
+sudo pip install erppeek
 sudo pip install --upgrade virtualenv
 
 #--------------------------------------------------
