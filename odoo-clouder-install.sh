@@ -119,8 +119,6 @@ sudo ln -s /lib/x86_64-linux-gnu/libz.so.1 /lib/libz.so
 
 echo -e "\n---- Install and Upgrade pip and virtualenv ----"
 sudo pip install --upgrade pip
-sudo pip install erppeek
-sudo pip install paramiko
 sudo pip install --upgrade virtualenv
 
 #--------------------------------------------------
@@ -198,11 +196,11 @@ sudo virtualenv --python=/usr/local/lib/python2.7.9/bin/python $OE_VIRTENV
 source $OE_HOME_EXT/$OE_VIRTENV/bin/activate
 
 echo -e "\n---- Install Odoo python dependencies in requirements.txt ----"
-sudo $OE_HOME_EXT/$OE_VIRTENV/bin/pip install -r $OE_HOME_EXT/requirements.txt
+$OE_HOME_EXT/$OE_VIRTENV/bin/pip install -r $OE_HOME_EXT/requirements.txt
 
 echo -e "\n---- Install additional python dependencies ----"
 # This is for compatibility with Ubuntu 16.04. Will work on 14.04
-sudo $OE_HOME_EXT/$OE_VIRTENV/bin/pip install suds
+$OE_HOME_EXT/$OE_VIRTENV/bin/pip install suds
 
 sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
 
@@ -216,7 +214,7 @@ echo "*                               *"
 echo "*********************************"
 sudo apt-get -y install libgeoip-dev libffi-dev libssl-dev geoip-database-contrib
 # Additional (kind of optional) dependencies
-sudo $OE_HOME_EXT/$OE_VIRTENV/bin/pip install unicodecsv urllib3 GeoIP html5lib passlib pysftp
+$OE_HOME_EXT/$OE_VIRTENV/bin/pip install unicodecsv urllib3 GeoIP html5lib passlib pysftp
 
 sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
 
@@ -263,7 +261,7 @@ fi
 # Startup File
 #--------------------------------------------------
 echo -e "* Create startup file"
-sudo su root -c "echo '#!/bin/sh' >> $OE_HOME_EXT/start.sh"
+sudo su root -c "echo '#! /bin/sh' >> $OE_HOME_EXT/start.sh"
 sudo su root -c "echo 'sudo -u $OE_USER $OE_HOME_EXT/openerp-server --config=/etc/${OE_CONFIG}.conf' >> $OE_HOME_EXT/start.sh"
 sudo chmod 755 $OE_HOME_EXT/start.sh
 
@@ -278,7 +276,7 @@ sudo npm install -g npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g less
 sudo npm install -g less-plugin-clean-css
-sudo apt-get -y install node-less
+apt-get -y install node-less
 
 #--------------------------------------------------
 # Install Wkhtmltopdf if needed
@@ -428,7 +426,7 @@ echo "*                         *"
 echo "*         Updating        *"
 echo "*                         *"
 echo "***************************"
-sudo apt-get update
+apt-get update
 
 echo "-----------------------------------------------------------"
 echo "Done! The Odoo server is up and running. Specifications:"
